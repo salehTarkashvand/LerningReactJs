@@ -5,42 +5,43 @@ const person = {name:'saleh',age:24 , make:'programming' , family:'torkashvand'}
 
 const {...props} =person ;
 
-
-function alaki ({name}){
-console.log(name);
-}
-
-// alaki(person)
-// const filter = persons.filter(({age}) => age < 20)
+// THIS CODE 
 
 const persons = [
-    {name:'saleh',age:24 , make:'programming'},
-    {name:'hamed',age:19 , make:'programming'},
-    {name:'mahmod',age:20 , make:'programming'},
-    {name:'maryam',age:18 , make:'programming'}
+
+    {name:'saleh', age:24 , make:'programming'},
+
+    {name:'hamed', age:19 , make:'programming'},
+
+    {name:'mahmئod', age:20 , make:'programming'},
+
+    {name:'maryam', age:18 , make:'programming'}
+
     ];
 
-const filter = persons.reduce((pre,carentValue )=>{
-    const firstChar = carentValue.name[0].toLocaleLowerCase();
-    // console.log(firstChar);
-    if(carentValue.name[0].toLocaleUpperCase()==firstChar){
-        const result = pre.push({
-            grop:carentValue.name[0],
-            children:carentValue
-        })
-        // console.log(result);
-        return result  
-    }
-    pre.push({
-        grop:carentValue.name[0],
-        children:carentValue
-    })
-},[])
-    
+const result = persons.reduce((acc , person)=>{
+// kalame aval migire
+        let key = person.name[0]
+// inja cheack mikone if acc (ke ye object hastesh) iage nist biya ye perperty ezafe kon namesh dynamik az line 24 ke keshidim biron bezar onja
+    // {h:{group:a , children:[]}
+    // dar lahze aval in misza bad miad pain meghdar mide line31 hala bain kar kare ma rahat tar mishe dige lazem nist search konim 
+    if(!acc[key]){
+            acc[key] = {group:key , children : [] }
+        }
+    // kafiye homn key ke darim dobare mieghdar mide age nabshe az ghabl misze 
+        acc[key].children.push(person)
+        return acc
+// defult value ye object mikonim ke khile rah tare modiritesh chon bazaresh darim tabidlesh konim
+    },{})
+console.log(result);
+//inja miad key object delete mikone ke  akhar tabdil mikone   object.values()  serach kon
+let t = Object.values(result)
 
-// const sum = [...number,...number2]
-console.log(filter);
+console.log(t);
 
-// console.log(props); 
+
+
+
+
 
 
