@@ -5,36 +5,40 @@ const person = {name:'saleh',age:24 , make:'programming' , family:'torkashvand'}
 
 const {...props} =person ;
 
-
-function alaki ({name}){
-console.log(name);
-}
-
-// alaki(person)
-// const filter = persons.filter(({age}) => age < 20)
+// THIS CODE 
 
 const persons = [
-    {name:'saleh',age:24 , make:'programming'},
-    {name:'hamed',age:19 , make:'programming'},
-    {name:'mahmod',age:20 , make:'programming'},
-    {name:'maryam',age:18 , make:'programming'}
+
+    {name:'saleh', age:24 , make:'programming'},
+
+    {name:'hamed', age:19 , make:'programming'},
+
+    {name:'mahmod', age:20 , make:'programming'},
+
+    {name:'maryam', age:18 , make:'programming'}
+
     ];
 
-const result = persons.reduce((acc,person )=>{
-    const key = person.name[0].toLocaleLowerCase();
+const filter = persons.reduce((pre,carentValue )=>{
+    const firstChar = carentValue.name[0].toLocaleLowerCase();
     // console.log(firstChar);
-    if(!acc[key]){
-        acc[key]={group:key , children:[]}  
+    if(carentValue.name[0].toLocaleUpperCase()==firstChar){
+        const result = pre.push({
+            grop:carentValue.name[0],
+            children:carentValue
+        })
+        // console.log(result);
+        return result  
     }
-    acc[key].children.push(person)
-
-    return acc
-},{})
+    pre.push({
+        grop:carentValue.name[0],
+        children:carentValue
+    })
+},[])
     
 
 // const sum = [...number,...number2]
-console.log(result);
+console.log(filter);
 
-// console.log(props); 
 
 
