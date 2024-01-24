@@ -8,33 +8,22 @@ const {...props} =person ;
 // THIS CODE 
 
 const persons = [
-
-    {name:'saleh', age:24 , make:'programming'},
-
-    {name:'hamed', age:19 , make:'programming'},
-
-    {name:'mahmod', age:20 , make:'programming'},
-
-    {name:'maryam', age:18 , make:'programming'}
-
+    {name:'saleh',age:24 , make:'programming'},
+    {name:'hamed',age:19 , make:'programming'},
+    {name:'mahmod',age:20 , make:'programming'},
+    {name:'maryam',age:18 , make:'programming'}
     ];
 
-const filter = persons.reduce((pre,carentValue )=>{
-    const firstChar = carentValue.name[0].toLocaleLowerCase();
+const result = persons.reduce((acc,person )=>{
+    const key = person.name[0].toLocaleLowerCase();
     // console.log(firstChar);
-    if(carentValue.name[0].toLocaleUpperCase()==firstChar){
-        const result = pre.push({
-            grop:carentValue.name[0],
-            children:carentValue
-        })
-        // console.log(result);
-        return result  
+    if(!acc[key]){
+        acc[key]={group:key , children:[]}  
     }
-    pre.push({
-        grop:carentValue.name[0],
-        children:carentValue
-    })
-},[])
+    acc[key].children.push(person)
+
+    return acc
+},{})
     
 
 // const sum = [...number,...number2]
