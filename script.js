@@ -17,19 +17,20 @@ const persons = [
     {name:'saleh',age:24 , make:'programming'},
     {name:'hamed',age:19 , make:'programming'},
     {name:'mahmod',age:20 , make:'programming'},
-    {name:'maryam',age:18 , make:'programming'}
+    {name:'maryam',age:18 , make:'programming'},
+    {name:'davood',age:18 , make:'programming'},
+    {name:'danial',age:18 , make:'programming'}
     ];
 
-const result = persons.reduce((acc,person )=>{
-    const key = person.name[0].toLocaleLowerCase();
-    // console.log(firstChar);
+ const result = persons.reduce((acc , person)=>{
+    const [key] = person.name[0].toLocaleUpperCase();
     if(!acc[key]){
-        acc[key]={group:key , children:[]}  
+        acc[key] = {group:key , children : []}
     }
     acc[key].children.push(person)
-
     return acc
-},{})
+
+ },{})
     
 
 // const sum = [...number,...number2]
